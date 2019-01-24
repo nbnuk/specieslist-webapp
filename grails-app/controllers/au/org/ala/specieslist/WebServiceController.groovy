@@ -78,7 +78,8 @@ class WebServiceController {
                         username: li.mylist.username,
                         listName: li.mylist.listName,
                         sds: li.mylist.isSDS?:false,
-                        isBIE: li.mylist.isBIE?:false
+                        isBIE: li.mylist.isBIE?:false,
+                        region: li.mylist.region?:""
                 ],
                 kvpValues: li.kvpValues.collect{ kvp ->
                     [
