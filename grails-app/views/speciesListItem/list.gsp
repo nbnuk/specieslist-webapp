@@ -30,6 +30,7 @@
     <meta name="layout" content="${grailsApplication.config.skin.layout}"/>
     <meta name="breadcrumb" content="${speciesList?.listName}"/>
     <meta name="breadcrumbParent" content="${request.contextPath}/,Species lists"/>
+    <asset:stylesheet src="nbn.css" media="all" />
     <script language="JavaScript" type="text/javascript" src="${asset.assetPath(src: 'facets.js')}"></script>
     <script language="JavaScript" type="text/javascript" src="${asset.assetPath(src: 'getQueryParam.js')}"></script>
     <script language="JavaScript" type="text/javascript"
@@ -453,14 +454,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pull-right margin-top-10">
-                            <a href="#download" class="btn btn-ala" title="View the download options for this species list."
+                            <a href="#download" class="btn btn-default" title="View the download options for this species list."
                                id="downloadLink">Download</a>
 
-                            <a class="btn btn-ala" title="View occurrences for up to ${maxDownload} species on the list"
+                            <a class="btn btn-default" title="View occurrences for up to ${maxDownload} species on the list"
                                href="${request.contextPath}/speciesList/occurrences/${params.id}${params.toQueryString()}&type=Search">View occurrence records</a>
 
                             <a href="${request.contextPath}/speciesList/spatialPortal/${params.id}${params.toQueryString()}&type=Search"
-                               class="btn btn-ala" title="View the spatial portal.">View in spatial portal</a>
+                               class="btn btn-default" title="View the spatial portal.">View in spatial portal</a>
                         </div> <!-- rightfloat -->
                     </div>
                 </div>
@@ -983,7 +984,7 @@
                                     <td id="img_${result.guid}">
                                         <g:if test="${result.imageUrl}">
                                             <a href="${bieUrl}/species/${result.guid}" title="${bieTitle}"><img
-                                                    style="max-width: 400px;" src="${result.imageUrl}"
+                                                    style="max-width: 120px;" src="${result.imageUrl}"
                                                     class="smallSpeciesImage"/></a>
                                         </g:if>
                                     </td>

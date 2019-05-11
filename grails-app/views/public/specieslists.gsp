@@ -18,6 +18,7 @@
     <meta name="layout" content="${grailsApplication.config.skin.layout}"/>
     <meta name="breadcrumb" content="Species lists"/>
     <title>Species lists |${grailsApplication.config.skin.orgNameLong}</title>
+    <asset:stylesheet src="nbn.css" media="all" />
 </head>
 
 <body class="">
@@ -31,9 +32,9 @@
 
                 <div class="col-md-4">
                     <span class="pull-right">
-                        <a class="btn btn-ala" title="Add Species List"
+                        <a class="btn btn-default" title="Add Species List"
                            href="${request.contextPath}/speciesList/upload">Upload a list</a>
-                        <a class="btn btn-ala" title="My Lists" href="${request.contextPath}/speciesList/list">My Lists</a>
+                        <a class="btn btn-default" title="My Lists" href="${request.contextPath}/speciesList/list">My Lists</a>
                     </span>
                 </div>
             </div><!--.row-->
