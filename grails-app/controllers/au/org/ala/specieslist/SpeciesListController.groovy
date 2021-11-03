@@ -430,6 +430,7 @@ class SpeciesListController {
      */
     def rematch(){
         log.info("Rematching for " + params.id)
+        System.out.println("----------------------------Rematching for " + params.id)
         if (params.id && !params.id.startsWith("dr"))
             params.id = SpeciesList.get(params.id)?.dataResourceUid
         Integer totalRows, offset = 0;
@@ -464,6 +465,7 @@ class SpeciesListController {
                         item.guid = null
                         if (!item.save(flush: true)) {
                             log.error "Error saving item (" + rawName + "): " + item.errors()
+                            System.out.println("Error saving item (" + rawName + "): " + item.errors())
                         }
                     }
                 }
@@ -476,8 +478,9 @@ class SpeciesListController {
 
             offset += BATCH_SIZE;
             log.info("Rematched ${offset} of ${totalRows} - ${Math.round(offset * 100 / totalRows)}% complete")
+            System.out.println("----------------------------Rematched ${offset} of ${totalRows} - ${Math.round(offset * 100 / totalRows)}% complete")
         }
-
+        System.out.println("----------------------------Rematch complete");
         render(text: "Rematch complete")
     }
 
