@@ -4,10 +4,12 @@ import groovyx.net.http.HTTPBuilder
 
 class LoggerService {
 
+    def grailsApplication;
+
     //@Cacheable("loggerCache")
     def getReasons() {
         log.info("Refreshing the download reasons")
-         HTTPBuilder http = new HTTPBuilder("http://logger.ala.org.au")
+         HTTPBuilder http = new HTTPBuilder(grailsApplication.config.loggerURL)
          http.getClient().getParams().setParameter("http.socket.timeout", new Integer(5000))
         try{
             def result = http.get(path:'/service/logger/reasons')
