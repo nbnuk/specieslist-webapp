@@ -1,7 +1,6 @@
 import grails.util.Environment
 
 
-profile: web-plugin
 
 /******************************************************************************\
  *  CONFIG MANAGEMENT
