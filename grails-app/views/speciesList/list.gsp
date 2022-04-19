@@ -19,7 +19,6 @@
     <meta name="breadcrumbParent" content="${request.contextPath}/public/speciesLists,Species lists"/>
     <meta name="breadcrumb" content="My species lists"/>
     <title>My Species lists | ${grailsApplication.config.skin.orgNameLong}</title>
-    <asset:stylesheet src="nbn.css" media="all" />
     <style type="text/css">
     #speciesList {
         display: none;
@@ -44,7 +43,7 @@
             </div>
 
             <div class="col-md-4">
-                <g:link controller="speciesList" action="upload" class="btn btn-default pull-right"
+                <g:link controller="speciesList" action="upload" class="btn btn-ala pull-right"
                         title="Add Species List">Upload a list</g:link>
             </div>
         </div><!--inner-->
