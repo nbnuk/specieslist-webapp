@@ -45,7 +45,6 @@
         width: 100px;
     }
     </style>
-
     <asset:script type="text/javascript" asset-defer="">
         function init(){
             document.getElementById("buttonDiv").style.display = "block";
@@ -983,7 +982,7 @@
                                     <td id="img_${result.guid}">
                                         <g:if test="${result.imageUrl}">
                                             <a href="${bieUrl}/species/${result.guid}" title="${bieTitle}"><img
-                                                    style="max-width: 120px;" src="${result.imageUrl}"
+                                                    style="max-width: 400px;" src="${result.imageUrl}"
                                                     class="smallSpeciesImage"/></a>
                                         </g:if>
                                     </td>
