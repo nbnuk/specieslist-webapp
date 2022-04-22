@@ -23,9 +23,9 @@ apply plugin:"org.grails.grails-plugin"
 apply plugin:"org.grails.grails-plugin-publish"
 apply plugin:"org.grails.grails-gsp"
 apply plugin:"asset-pipeline"
-apply plugin:"maven-publish"
+//apply plugin:"maven-publish"
 
-//apply from: 'https://raw.githubusercontent.com/nbnuk/travis-build-configuration/master/travis_grails_publish.gradle'
+apply from: 'https://raw.githubusercontent.com/nbnuk/travis-build-configuration/master/travis_grails_publish.gradle'
 
 repositories {
     mavenLocal()
@@ -106,15 +106,15 @@ assets {
 
 publishing {
     repositories {
-//        maven {
-//            name 'Nexus'
-//            url "https://repository.gbif.org/repository/${project.version.endsWith('-SNAPSHOT') ? 'uk-nbn-snapshots' : 'uk-nbn-releases'}"
-//            credentials {
-//                username = System.getenv('TRAVIS_DEPLOY_USERNAME')
-//                password = System.getenv('TRAVIS_DEPLOY_PASSWORD')
-//            }
-//        }
-        mavenLocal()
+        maven {
+            name 'Nexus'
+            url "https://repository.gbif.org/repository/${project.version.endsWith('-SNAPSHOT') ? 'uk-nbn-snapshots' : 'uk-nbn-releases'}"
+            credentials {
+                username = System.getenv('TRAVIS_DEPLOY_USERNAME')
+                password = System.getenv('TRAVIS_DEPLOY_PASSWORD')
+            }
+        }
+       // mavenLocal()
     }
 
 
