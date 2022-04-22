@@ -1,4 +1,4 @@
-# Species lists and traits   [![Build Status](https://travis-ci.org/AtlasOfLivingAustralia/specieslist-webapp.svg?branch=master)](https://travis-ci.org/AtlasOfLivingAustralia/specieslist-webapp)
+# Species lists and traits   [![Build Status](https://travis-ci.com/nbnuk/specieslist-webapp.svg?branch=master-plugin)](https://travis-ci.com/nbnuk/specieslist-webapp)
 
 This is a  grails application for managing species lists. It supports:
 

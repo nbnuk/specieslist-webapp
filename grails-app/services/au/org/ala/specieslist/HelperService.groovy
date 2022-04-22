@@ -569,7 +569,7 @@ class HelperService {
             sli.guid = nsr.getLsid()
             sli.family = nsr.getRankClassification().getFamily()
             sli.matchedName = nsr.getRankClassification().getScientificName()
-            sli.author = nsr.getRankClassification().getAuthorship();
+            sli.author = nsr.getRankClassification().getAuthorship()
         }
     }
 

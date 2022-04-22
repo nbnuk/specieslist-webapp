@@ -45,7 +45,6 @@
         width: 100px;
     }
     </style>
-
     <asset:script type="text/javascript" asset-defer="">
         function init(){
             document.getElementById("buttonDiv").style.display = "block";
