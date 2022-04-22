@@ -239,19 +239,12 @@ class SpeciesListItemController {
      * @return
      */
     def downloadList(){
-
-        def removeEncodedAmpersandTransformation = { String key ->  key.startsWith('amp;')?  key.substring(4): key }
-
-        Map cleanParams = params.collectEntries { [(removeEncodedAmpersandTransformation.call(it.key)): it.value] }
-
-        if (cleanParams.id){
-            cleanParams.fetch = [ kvpValues: 'join' ]
+        if (params.id){
+            params.fetch = [ kvpValues: 'join' ]
             log.debug("Downloading Species List")
-            def keys = SpeciesListKVP.executeQuery("select distinct key from SpeciesListKVP where dataResourceUid='"+cleanParams.id+"'")
-            def fqs = cleanParams.fq?[cleanParams.fq].flatten().findAll{ it != null } : null
-            if (fqs != null) fqs = fqs.flatten()
-            log.warn("*** fqs = " + fqs.toString())
-            def baseQueryAndParams = queryService.constructWithFacets(" from SpeciesListItem sli ",fqs, cleanParams.id)
+            def keys = SpeciesListKVP.executeQuery("select distinct key from SpeciesListKVP where dataResourceUid='"+params.id+"'")
+            def fqs = params.fq?[params.fq].flatten().findAll{ it != null } : null
+            def baseQueryAndParams = queryService.constructWithFacets(" from SpeciesListItem sli ",fqs, params.id)
             def sli = SpeciesListItem.executeQuery("Select sli " + baseQueryAndParams[0], baseQueryAndParams[1])
             //def sli =SpeciesListItem.findAllByDataResourceUid(params.id,params)
             def out = new StringWriter()
@@ -267,7 +260,7 @@ class SpeciesListItemController {
                 csvWriter.writeNext(row as String[])
             }
             csvWriter.close()
-            def filename = cleanParams.file?:"list.csv"
+            def filename = params.file?:"list.csv"
             if(!filename.toLowerCase().endsWith('.csv')){
                 filename += '.csv'
             }
