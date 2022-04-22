@@ -1,4 +1,4 @@
-package au.org.ala.alerts
+package au.org.ala.specieslist
 
 
 import grails.plugins.Plugin
