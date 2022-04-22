@@ -6,3 +6,4 @@ out
 /.slcache
 /logs
 *.iml
+.DS_Store
