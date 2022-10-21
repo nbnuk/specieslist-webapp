@@ -759,7 +759,7 @@ class HelperService {
     def findAcceptedConceptByLSID(lsid) {
         NameUsageMatch record
         try {
-            record = nameExplorerService.searchForRecordByLsid(lsid)
+            record = nameExplorerService.searchForAcceptedRecordDefaultHandling(lsid)
         }
         catch (Exception e) {
             log.error(e.getMessage())
