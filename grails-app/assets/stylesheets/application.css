@@ -1,3 +1,15 @@
 /*
  *= require AlaBsAdditions.css
  */
+
+/*BEGIN FIXES */
+/*species list table width http://localhost:8080/speciesListItem/list/dr572*/
+table#speciesListTable{
+    width:100%;
+}
+
+/*items per page drop down*/
+#maxItems{
+    height:inherit
+}
+/*END FIXES */

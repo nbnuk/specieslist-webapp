@@ -6,14 +6,14 @@ branches:
   only:
   - master
   - develop
-  - feature/oidcIntegration
+  - master-nbn
 
-before_install:
+#before_install:
   - rm -fr $HOME/.gradle/caches
-  - sudo mkdir -p /data/specieslist-webapp/ehcache
-  - sudo chmod o+xw /data
-  - sudo chmod o+xw /data/specieslist-webapp
-  - sudo chmod o+xw /data/specieslist-webapp/ehcache
+#  - sudo mkdir -p /data/specieslist-webapp/ehcache
+#  - sudo chmod o+xw /data
+#  - sudo chmod o+xw /data/specieslist-webapp
+#  - sudo chmod o+xw /data/specieslist-webapp/ehcache
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
