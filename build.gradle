@@ -130,7 +130,9 @@ dependencies {
     compile 'org.gbif:gbif-common:0.37'
 }
 
-bootRun {
+test.onlyIf { false }
+
+    bootRun {
     ignoreExitValue true
     jvmArgs(
         '-Dspring.output.ansi.enabled=always', 
