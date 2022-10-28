@@ -7,7 +7,7 @@ branches:
   - master
   - develop
   - master-nbn
-  - travis-nexus
+  - travs-nexus
 
 #before_install:
   - rm -fr $HOME/.gradle/caches
