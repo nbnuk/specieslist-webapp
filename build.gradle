@@ -132,6 +132,7 @@ dependencies {
 
 
 integrationTestClasses.onlyIf{ false }
+integrationTest.onlyIf{ false }
 
 bootRun {
     ignoreExitValue true
