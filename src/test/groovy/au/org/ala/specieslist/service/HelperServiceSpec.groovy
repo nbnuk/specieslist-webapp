@@ -139,7 +139,7 @@ class HelperServiceSpec extends Specification implements ServiceUnitTest<HelperS
                 null, null, null, null, null,
                 "family", null, null, null, null,
                 null, null, null, null,
-                null)
+                null,null,null,null,null)
         nameExplorerService.searchForRecordByTerms(_) >>> result
 
         helperService.setLocalAuthService(Mock(LocalAuthService))
