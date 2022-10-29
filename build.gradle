@@ -41,6 +41,25 @@ publishing {
         }
 //        mavenLocal()
     }
+    publications {
+        mavenJar(MavenPublication) {
+            pom.withXml {
+                def pomNode = asNode()
+                pomNode.dependencyManagement.replaceNode {}
+
+                // simply remove dependencies without a version
+                // version-less dependencies are handled with dependencyManagement
+                // see https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/8 for more complete solutions
+                pomNode.dependencies.dependency.findAll {
+                    it.version.text().isEmpty()
+                }.each {
+                    it.replaceNode {}
+                }
+            }
+            from components.java
+
+        }
+    }
 }
 
 repositories {
@@ -116,7 +135,6 @@ dependencies {
     compile "org.grails.plugins:ala-ws-plugin:3.1.1"
     compile "au.org.ala:userdetails-service-client:2.0.0"
     runtime "org.grails.plugins:ala-bootstrap3:4.1.0"
-    //runtime "org.grails.plugins:ala-bootstrap3:3.2.1"
     runtime ("org.grails.plugins:ala-admin-plugin:2.3.0") {
         exclude module: "cache"
     }
@@ -129,6 +147,9 @@ dependencies {
 
     compile 'org.gbif:gbif-common:0.37'
 }
+
+
+integrationTest.onlyIf{ false }
 
 bootRun {
     ignoreExitValue true
@@ -148,17 +169,23 @@ tasks.withType(GroovyCompile) {
     }
 }
 
-webdriverBinaries {
-    chromedriver '2.45.0'
-    geckodriver '0.24.0'
-}
-
-tasks.withType(Test) {
-    systemProperty "geb.env", System.getProperty('geb.env')
-    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-    systemProperty "webdriver.chrome.driver", System.getProperty('webdriver.chrome.driver')
-    systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
-}
+//webdriverBinaries {
+//    chromedriver {
+//        version = '2.45.0'
+//        architecture = 'X86'
+//    }
+//    geckodriver {
+//        '0.24.0'
+//        architecture = 'X86'
+//    }
+//}
+//
+//tasks.withType(Test) {
+//    systemProperty "geb.env", System.getProperty('geb.env')
+//    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
+//    systemProperty "webdriver.chrome.driver", System.getProperty('webdriver.chrome.driver')
+//    systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
+//}
 
 
 assets {
