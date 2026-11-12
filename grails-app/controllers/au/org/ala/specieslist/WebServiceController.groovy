@@ -724,18 +724,18 @@ class WebServiceController {
                 String username = java.net.URLDecoder.decode(userCookie.getValue(), 'utf-8')
                 //test to see that the user is valid
                 user = authService.getUserForEmailAddress(username)
-            }
 
-            // NBN Patch
-            // Code further down already sets username from user.userName where as other details were previously set in Helperservice
-            // Helperservice now uses current user instead of lookup on username for these, but there is no current user when called from legacy spatial and leaning on cookie
-            if(user)
-            {
-                jsonBody.userId = user.userId
-                jsonBody.firstName = user.firstName
-                jsonBody.surname = user.lastName
+                // NBN Patch
+                // Code further down already sets username from user.userName where as other details were previously set in Helperservice
+                // Helperservice now uses current user instead of lookup on username for these, but there is no current user when called from legacy spatial and leaning on cookie
+                if(user)
+                {
+                    jsonBody.userId = user.userId
+                    jsonBody.firstName = user.firstName
+                    jsonBody.surname = user.lastName
+                }
+                // End NBN Patch
             }
-            // End NBN Patch
 
             boolean replaceList = true //default behaviour
             if (user) {
