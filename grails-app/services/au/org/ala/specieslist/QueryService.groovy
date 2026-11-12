@@ -506,9 +506,14 @@ class QueryService {
                         pos = facet.indexOf(":")
                         String key = facet.substring(0, pos)
                         String value = facet.substring(pos + 1)
+                        String keyParamName = "key" + sindex
+                        String valueParamName = "value" + sindex
+
                         query.append(" join sli.kvpValues kvp").append(sindex)
-                        whereBuilder.append(" AND kvp").append(sindex).append(".key=:key AND kvp").append(sindex).append(".value=:value")
-                        queryparams << [key: key, value: value]
+                        whereBuilder.append(" AND kvp").append(sindex).append(".key=:").append(keyParamName)
+                                .append(" AND kvp").append(sindex).append(".value=:").append(valueParamName)
+                        queryparams.put(keyParamName, key)
+                        queryparams.put(valueParamName, value)
                     } else {
                         String key = facet.substring(0, pos)
                         String value = facet.substring(pos + 1)
@@ -516,8 +521,9 @@ class QueryService {
                         if (value.equalsIgnoreCase("null")) {
                             whereBuilder.append(" is null")
                         } else {
-                            whereBuilder.append("=:value ")
-                            queryparams << [value: value]
+                            String paramName = "fieldValue" + index
+                            whereBuilder.append("=:").append(paramName).append(" ")
+                            queryparams.put(paramName, value)
                         }
                     }
                 }
