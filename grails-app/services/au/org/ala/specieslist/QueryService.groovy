@@ -745,6 +745,12 @@ class QueryService {
             //get the ids for the query -- this allows correct counts when joins are being performed.
             def ids = SpeciesListItem.executeQuery("select distinct sli.id " + baseQueryParams[0], baseQueryParams[1])
 
+            // no items match the filters, so there are no facet values to count. Without this the
+            // 'sli.id in (:ids)' restriction below is dropped and counts for the whole unfiltered list are returned.
+            if (!ids) {
+                return map
+            }
+
             //println(ids)
             Map queryParameters = [druid: id]
             if (ids) {
